@@ -122,6 +122,6 @@ STATIC_URL = '/music/'
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'cs13b1037@iith.ac.in'
-EMAIL_HOST_PASSWORD = 'pandulu143'
+EMAIL_HOST_PASSWORD = '----------'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
