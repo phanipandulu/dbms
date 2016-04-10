@@ -11,4 +11,6 @@ urlpatterns = [
     url(r'(?P<id>[0-9]+)/$', views.user, name='user'),
     url(r'^search$', views.search, name='search'),
     url(r'^watch/(?P<id>[a-zA-Z0-9_-]+)$', views.watch, name='watch'),
+    url(r'^channel/(?P<id>[a-zA-Z0-9_-]+)$',views.channel,name='channel'),
+    url(r'^playlist/(?P<id>[a-zA-Z0-9_-]+)$',views.playlist,name='playlist')
 ]

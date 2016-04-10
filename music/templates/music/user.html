@@ -17,6 +17,7 @@
 </form>
 
 <div id="menu">
+<h1> Popular Music Videos </h1>
 {% if popular_videos %}
 
     {% for v in popular_videos %}
@@ -32,6 +33,29 @@
         <!--<p>Caption : {{ v.caption }}</p>-->
         <!--<p>Duration : {{ v.duration }}</p>-->
         <p>views : {{ v.viewCount }}</p>
+        <!--<p>likes : {{ v.likeCount }}</p>-->
+        <br>
+    {% endfor %}
+{% endif %}
+
+<h1> Popular Music Channels </h1>
+
+{% if popular_channels %}
+
+    {% for ch in popular_channels %}
+        <!--<p>{{ forloop.count }}</p>-->
+        <!--<p>Thumbnail url : {{ v.thumbnail_url }}</p>-->
+        <!--<a href="https://www.youtube.com/watch?v={{ v.id }}" ><img src="{{ v.thumbnail_url }}" width="{{ v.thumbnail_width }}" height="{{ v.thumbnail_height }}" /></a>-->
+        <a href="/channel/{{ ch.id }}" ><img src="{{ ch.thumbnail_url }}" width="{{ ch.thumbnail_width }}" height="{{ ch.thumbnail_height }}" /></a>
+        <!-- <img src="{{ ch.thumbnail_url }}" width="{{ ch.thumbnail_width }}" height="{{ ch.thumbnail_height }}" /> -->
+        <!--<br>-->
+        <p>Title : {{ ch.title }}</p>
+        <!--<p>Id : {{ v.id }}</p>-->
+        <p>Channel Description : {{ ch.description }}</p>
+        <!--<p>{{ v.description }}</p>-->
+        <!--<p>Caption : {{ v.caption }}</p>-->
+        <!--<p>Duration : {{ v.duration }}</p>-->
+        <p>views : {{ ch.viewCount }}</p>
         <!--<p>likes : {{ v.likeCount }}</p>-->
         <br>
     {% endfor %}
