@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'celery',
     'music.apps.MusicConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -81,6 +82,17 @@ DATABASES = {
     }
 }
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'DBMSCache',
+        'TIMEOUT': 600,
+        'OPTIONS': {
+            'MAX_ENTRIES': 1000
+        }
+    }
+}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
@@ -106,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Indian/Kerguelen'
 
 USE_I18N = True
 
@@ -119,9 +131,20 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/music/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'music/')
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'cs13b1037@iith.ac.in'
-EMAIL_HOST_PASSWORD = 'pandulu143'
+EMAIL_HOST_PASSWORD = '--------'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+
+
+# CELERY STUFF
+BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Africa/Nairobi'
